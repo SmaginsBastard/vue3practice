@@ -19,7 +19,7 @@ export default {
         cursor: pointer;
         border-radius: 5px;  
         padding: 0%;
-        margin: 0%;
-        
+        margin: 0%; 
+        left: unset;
     }  
 </style>
