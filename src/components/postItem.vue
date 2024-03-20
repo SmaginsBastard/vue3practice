@@ -47,6 +47,6 @@ post: {
 
     .btn{ 
       
-        
+        color: aqua;
     }
 </style>
