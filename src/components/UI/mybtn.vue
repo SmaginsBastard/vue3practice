@@ -18,8 +18,7 @@ export default {
         padding: 10px 15px;
         cursor: pointer;
         border-radius: 5px;  
-        padding: 0%;
-        margin: 0%;
+    
         
     }  
 </style>

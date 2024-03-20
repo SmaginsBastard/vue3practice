@@ -5,7 +5,9 @@
        <h1>Page with posts</h1>
        <div class="app__btns">
         <mybtn @click="showDialog" style="margin: 15px 0;"> create post </mybtn>
-        <myselect> </myselect>
+        <myselect  v-model="selectedSort" :options="sortOptions" > 
+            
+        </myselect>
        </div>
      
 <mydialog  v-model:show="dialogVisible" > 
@@ -44,6 +46,11 @@ export default {
         dialogVisible: false,
         modificatorlValue: '',  
         isPostLoading: false,
+        selectedSort: '',
+        sortOptions: [
+            { value: 'title', name: 'By name' },
+            { value: 'body', name: 'By description' },
+        ]   
             
         }
     },

@@ -1,8 +1,8 @@
 <template>
-    <select v-model="modelValue" @change="changeOptions">
+    <select :value="modelValue" @change="changeOptions">
         <option disabled  value="">choose option</option>
         <option v-for="option in options" :key="option.value"  :value="option.value"> 
-        {{ opention.name }}
+        {{ option.name }}
         </option>
     </select>
 </template>
@@ -12,16 +12,18 @@ export default {
     props: {
         modelValue: {
             type: String,
+            default: ''
         },
         options: {
             type: Array,
             default: () => []
         }
     },
-    methods
+    methods: {
     changeOptions(event) {
         this.$emit('update:modelValue', event.target.value)
     }
+}
 }
 </script>
 <style scoped>
