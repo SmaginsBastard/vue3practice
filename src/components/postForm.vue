@@ -50,7 +50,7 @@ export default {
     }
     
 .btn{ 
-    margin-top: 12  px;
+    margin-top: 12px;
     width: 40%;
 }
   

@@ -3,6 +3,10 @@
 <div class="app">
         <input type="text" v-model.trim="modificatorlValue">
        <h1>Page with posts</h1>
+       <myinput
+       v-model="searchQuery"
+       placeholder="search..."
+       />
        <div class="app__btns">
         <mybtn @click="showDialog" style="margin: 15px 0;"> create post </mybtn>
         <myselect  v-model="selectedSort" :options="sortOptions" > 
@@ -18,7 +22,7 @@
 
 
     
-<postList :posts="posts" 
+<postList :posts="sortAndSearchPosts" 
 @remove="removePost"
 v-if="!isPostLoading"/>
 
@@ -31,6 +35,7 @@ v-if="!isPostLoading"/>
 import axios from 'axios';
 import postForm from './components/postForm.vue'
 import postList from './components/postList.vue'
+import Myinput from './components/UI/myinput.vue';
 export default {
 
     components: { 
@@ -46,6 +51,7 @@ export default {
         dialogVisible: false,
         modificatorlValue: '',  
         isPostLoading: false,
+        searchQuery: '',
         selectedSort: '',
         sortOptions: [
             { value: 'title', name: 'By name' },
@@ -58,6 +64,7 @@ export default {
     mounted() {
     this.fetchPosts();
 },
+
     methods: {
       
         createPost(post) {
@@ -85,6 +92,15 @@ export default {
         },
  
     },
+
+computed: {
+    sortedposts(){
+      return[...this.posts].sort((post1, post2) => post1[this.selectedSort]?.localeCompare(post2[this.selectedSort]))
+    },
+    sortAndSearchPosts() {
+        return this.sortedposts.filter((post) => post.title.includes(this.searchQuery))
+    }
+},
 }
 </script>
 <style>
